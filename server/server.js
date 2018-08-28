@@ -25,13 +25,14 @@ app.use(function(req, res, next) {
 // Allow Express To User Public Files
 
 let db = require("./models");
-let controllers = require("./contollers");
+let controllers = require("./controllers");
 
 // API Endpoints
 
 // --------- USERS ---------
-app.get("/api/users", controller.user.getAll);
-app.post("/api/user/create", controller.user.createUser);
+app.get("/api/users", controllers.user.getAll);
+app.get("/api/user/find", controllers.user.getUser);
+app.post("/api/user/create", controllers.user.createUser);
 
 
 

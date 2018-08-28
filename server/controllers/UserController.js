@@ -1,4 +1,4 @@
-let db = require("./models");
+let db = require("../models");
 
 // GET api/users
 
@@ -12,12 +12,24 @@ const getUsers = (req, res) => {
     })
 }
 
+// GET api/user/find
+
+const getUser = (req, res) => {
+    console.log('email',req.params.email)
+    db.User.findOne({email: req.query.email, password: req.query.password}, (err, foundUser) => {
+        if (err) {
+            console.log(err)
+            return err;
+        }
+        console.log('user', foundUser);
+        res.json(foundUser);
+    })
+}
+
 // POST api/user/
 
 const createUser = (req, res) => {
-    console.log(req.body)
-
-    db.User.fineOne({email: req.body.email}, (err, user) => {
+    db.User.findOne({email: req.body.email}, (err, user) => {
         if (err) {
             console.log(err);
             return err;
@@ -40,4 +52,5 @@ const createUser = (req, res) => {
 module.exports = {
     getAll: getUsers,
     createUser: createUser,
+    getUser: getUser,
 }
