@@ -7,19 +7,14 @@ class UserModel {
         return request;
     }
 
-    static getUser(email, password) {
-        let request = axios.get("http://localhost:4000/api/user/find?", 
-            {
-                params: {
-                    email: email,
-                    password: password,
-                }
-            })
+    static getUser(userData) {
+        console.log('UserModel', userData)
+        let request = axios.get(`http://localhost:4000/api/users/${userData.email}`)
         return request;
     }
 
     static createUser(newUser){
-        let request = axios.post("http://localhost:4000/api/user/create", newUser )
+        let request = axios.post("http://localhost:4000/api/users/create", newUser )
         return request;
     }
 

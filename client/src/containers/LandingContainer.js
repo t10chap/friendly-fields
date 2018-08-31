@@ -7,17 +7,22 @@ class LandingContainer extends Component {
 
 
     render(){
+
+        console.log(this.props)
         return(
             <div className="landingPage">
                 <h1>Welcome to Friendly Fields</h1>
                 <h3>Please:</h3>
                 <Popup trigger={<button> Sign-up</button>} modal>
-                    <SignUpForm />
+                    <SignUpForm
+                        login={this.props.login}
+                    />
                 </Popup>
                 <Popup trigger={<button> Sign-in</button>} modal>
-                    <SignInForm />
+                    <SignInForm 
+                        login={this.props.login}
+                    />
                 </Popup>
-
             </div>
         )
     }

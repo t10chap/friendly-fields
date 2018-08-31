@@ -15,8 +15,8 @@ const getUsers = (req, res) => {
 // GET api/user/find
 
 const getUser = (req, res) => {
-    console.log('email',req.params.email)
-    db.User.findOne({email: req.query.email, password: req.query.password}, (err, foundUser) => {
+    console.log('email',req.params)
+    db.User.findOne({email: req.params.user_email}, (err, foundUser) => {
         if (err) {
             console.log(err)
             return err;

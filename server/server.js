@@ -1,5 +1,5 @@
 // Set Up Express
-
+const request = require('request');
 const express = require("express")
 const app = express();
 app.use(express.json());
@@ -31,9 +31,16 @@ let controllers = require("./controllers");
 
 // --------- USERS ---------
 app.get("/api/users", controllers.user.getAll);
-app.get("/api/user/find", controllers.user.getUser);
-app.post("/api/user/create", controllers.user.createUser);
+app.get("/api/users/:user_email", controllers.user.getUser);
+app.post("/api/users/create", controllers.user.createUser);
+// app.get('/api', (req, res) => {
+//     request.get({ url: "https://fortnite-public-api.theapinetwork.com/prod09/users/id", method:'post', },  function(error, response, body) { 
+//               if (!error && response.statusCode == 200) { 
+//                   res.json(body); 
+//                  } 
+//              });
 
+// })
 
 
 // SERVER

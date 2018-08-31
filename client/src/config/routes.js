@@ -1,11 +1,30 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import LandingContainer from '../containers/LandingContainer';
+import HomepageContainer from '../containers/HomepageContainer';
 
 const routes = (props) => {
+
+    console.log("ROUTE PROPS", props)
     return (
         <Switch>
-          <Route exact path='/' component={LandingContainer} />
+            <Route exact path='/'
+                render = { () => 
+                    <LandingContainer 
+                        {...props}
+                        login={props.login}
+                    />
+                }
+            />
+            <Route path='/homepage' 
+                render = { () => 
+                    <HomepageContainer 
+                        logout={props.logout}
+                        username={props.username}
+                        id={props.id}
+                    />
+                }
+            />
         </Switch>
     )
 }
