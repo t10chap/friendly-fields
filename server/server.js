@@ -32,16 +32,15 @@ let controllers = require("./controllers");
 // --------- USERS ---------
 app.get("/api/users", controllers.user.getAll);
 app.get("/api/users/:user_email", controllers.user.getUser);
+app.get("/api/users/friends/:id", controllers.user.getFriends)
 app.post("/api/users/create", controllers.user.createUser);
-// app.get('/api', (req, res) => {
-//     request.get({ url: "https://fortnite-public-api.theapinetwork.com/prod09/users/id", method:'post', },  function(error, response, body) { 
-//               if (!error && response.statusCode == 200) { 
-//                   res.json(body); 
-//                  } 
-//              });
+app.post("/api/users/friends/add/:id", controllers.user.addFriend);
 
-// })
-
+// --------- POSTS ---------
+app.get("/api/posts", controllers.post.getPosts);
+app.post("/api/posts/create", controllers.post.createPost);
+app.put("/api/posts/edit", controllers.post.editPost);
+app.delete("/api/posts/delete/:postId", controllers.post.deletePost);
 
 // SERVER
 

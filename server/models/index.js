@@ -6,7 +6,9 @@ mongoose.connect(
 );
 
 let Users = require("./UserModel");
+let Posts = require("./PostModel");
 
 module.exports = {
     User: Users,
+    Post: Posts,
 }

@@ -5,42 +5,49 @@ let db = require("../models");
 const getUsers = (req, res) => {
     db.User.find({}, (err, users) => {
         if (err) {
-            console.log(err);
             return err;
         }
         res.json(users);
     })
 }
 
-// GET api/user/find
+// GET api/users/find
 
 const getUser = (req, res) => {
-    console.log('email',req.params)
     db.User.findOne({email: req.params.user_email}, (err, foundUser) => {
         if (err) {
-            console.log(err)
             return err;
         }
-        console.log('user', foundUser);
         res.json(foundUser);
     })
 }
 
-// POST api/user/
+// GET api/users/friends
+
+const getFriends = (req, res) => {
+    db.User.find(req.params.id, (err, friends) => {
+        if(err){
+            console.log(err);
+            return err;
+        } else{
+            console.log(friends);
+            res.json(friends);
+        }
+    })
+}
+
+// POST api/users/create
 
 const createUser = (req, res) => {
     db.User.findOne({email: req.body.email}, (err, user) => {
-        if (err) {
-            console.log(err);
+        if (err){
             return err;
         }
         if (user){
-            res.status(400).send('user already extists');
-        }
-        else{
+            res.status(400).send('user already exists');
+        } else{
             db.User.create(req.body, (err, user) => {
                 if (err) {
-                    console.log(err);
                     return err;
                 }
                 res.json(user);
@@ -49,8 +56,41 @@ const createUser = (req, res) => {
     })
 }
 
+// POST api/users/friends/add/:id
+
+const addFriend = (req, res) => {
+    db.User.findById(req.params.id, (err, user) => {
+        if(err){
+            console.log(err);
+            return err;
+        } else if(user){
+            db.User.findOne(req.body, (err, friend) => {
+                if(err){
+                    console.log(err);
+                    return err;
+                }else if(friend){
+                     if(user.friends.indexOf(friend._id) > -1){
+                        res.status(400).send('Friend already added')
+                    }
+                    else{
+                        user.friends.push(friend._id)
+                        user.save()
+                        res.status(200).json(user)
+                    }
+                    
+                }
+            })
+            
+        } else{
+            res.status(404).send('User not found')
+        }
+    })
+}
+
 module.exports = {
     getAll: getUsers,
     createUser: createUser,
     getUser: getUser,
+    getFriends: getFriends,
+    addFriend: addFriend,
 }

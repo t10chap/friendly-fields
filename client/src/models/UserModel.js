@@ -18,6 +18,12 @@ class UserModel {
         return request;
     }
 
+    static addFriend(email, userId){
+        console.log("In AXIOS", email, userId)
+        let request = axios.post("http://localhost:400/api/users/friends/add/"+ userId)
+        return request;
+    }
+
 }
 
 export default UserModel;

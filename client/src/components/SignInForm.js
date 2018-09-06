@@ -42,10 +42,10 @@ class SignInForm extends Component {
                         headers: { Authorization: AuthStr } 
                     }
                 )
-                .then(res => {
-                    console.log("In Success", res.data);
-                    localStorage.setItem('epicId', res.data.uid);
-                    this.props.login(res.data.username, res.data.uid);
+                .then(FortniteRes => {
+                    console.log("In Success", FortniteRes.data);
+                    localStorage.setItem('epicId', FortniteRes.data.uid);
+                    this.props.login(FortniteRes.data.username, res.data._id);
                     this.props.history.push('/homepage');
                 })
             })

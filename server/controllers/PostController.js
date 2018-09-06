@@ -3,30 +3,59 @@ let db = require("../models");
 // GET api/posts
 
 const getPosts = (req, res) => {
-    db.Posts.find({}, (err, allPosts) => {
+    db.Post.find({}, (err, allPosts) => {
         if(err) {
-            console.log(err);
             return err;
         }
-        console.log(allPosts);
         res.json(allPosts);
     })
 }
 
 // POST api/posts/create
 
-const createPosts = (req, res) => {
-    db.Posts.find({}, (err, newPost) => {
+const createPost = (req, res) => {
+    db.Post.create(req.body, (err, newPost) => {
         if(err) {
-            console.log(err);
             return err;
         }
-        console.log(newPost);
         res.json(newPost);
+    })
+}
+
+// PUT api/posts/edit
+
+const editPost = (req, res) => {
+    let postId = req.body._id;
+    let update = req.body;
+
+    db.Post.findByIdAndUpdate(
+        postId, 
+        update, 
+        {new: true}, 
+        (err, updatedPost) => {
+            if(err){
+                return err;
+            }
+            return res.status(200).json(updatedPost);
+    });
+};
+
+// DELETE api/posts/delete
+
+const deletePost = (req, res) => {
+    let postId = req.params.postId;
+    db.Post.findByIdAndRemove(postId, (err, foundPost) => {
+        if(err) {
+            return err;
+        }else{
+            res.status(200).json(foundPost);
+        }
     })
 }
 
 module.exports = {
     getPosts: getPosts,
-    createPosts: createPosts,
+    createPost: createPost,
+    editPost: editPost,
+    deletePost: deletePost,
 }

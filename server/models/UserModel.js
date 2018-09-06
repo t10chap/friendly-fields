@@ -5,6 +5,10 @@ let UserSchema = new Schema ({
     email: String,
     epicName: String,
     password: String,
+    friends: [{
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+    }]
 })
 
 let User  = mongoose.model('User', UserSchema);

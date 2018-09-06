@@ -9,6 +9,7 @@ class App extends Component {
     username: '',
     id: '',
     epicId: '',
+    friends: [],
   }
 
   componentDidMount = () => {
@@ -22,7 +23,8 @@ class App extends Component {
       this.setState({
         username: localStorage.getItem('user'),
         id: localStorage.getItem('userId'),
-        epicId: localStorage.getItem('epicId')
+        epicId: localStorage.getItem('epicId'),
+        friends: localStorage.getItem('friends')
       })
     }
   }
@@ -51,7 +53,7 @@ class App extends Component {
     console.log("In App", this.state.id)
     return (
       <div className="App">
-        <MyRoutes username={this.state.username} id={this.state.id} login={this.login} logout={this.logout} />
+        <MyRoutes username={this.state.username} id={this.state.id} epicId={this.state.epidId} login={this.login} logout={this.logout} />
       </div>
     );
   }
