@@ -64,31 +64,31 @@ class SignUpForm extends Component {
     render(){
         console.log(this.state.platform)
         return(
-            <form className='ClassForm' onSubmit={this.handleSubmit}>
+            <form className='classForm' onSubmit={this.handleSubmit}>
                 <h2>Sign Up</h2>
                 <div className='form-group'>
-                    <label htmlFor = 'email' > Email address </label>
-                    <input type = 'email' className = 'form-control' ref='email'/>
+                    <label htmlFor='email' > Email address </label>
+                    <input type='email' className='form-control email' ref='email'/>
                 </div>
                 <div className='form-group'>
-                    <label htmlFor = 'text' > Epic Name </label>
-                    <input type = 'text' className = 'form-control' ref='epic'/>
+                    <label htmlFor='text' > Epic Name </label>
+                    <input type='text' className='form-control epicName' ref='epic'/>
                 </div>
-                <label>Epic Account Platform</label>
+                <label className="signUpPlatform">Epic Account Platform</label>
                 <select value={this.state.value} onChange={this.handleChange}>
                     <option value="pc">PC</option>
                     <option value="xb1">Xbox 1</option>
                     <option value="ps4">PS4</option>
                 </select>
-                <div className = 'form-group'>
-                    <label htmlFor = 'password' > Password </label>
-                    <input type = 'password' className = 'form-control' ref = 'password'/>
+                <div className='form-group'>
+                    <label htmlFor='password' > Password </label>
+                    <input type='password' className='form-control' ref='password' />
                 </div>
-                <div className = 'form-group'>
-                    <label htmlFor = 'password' > Confirm Password </label>
-                    <input type = 'password' className = 'form-control' ref = 'confirmpassword'/>
+                <div className='form-group'>
+                    <label htmlFor='password' > Confirm Password </label>
+                    <input type='password' className='form-control passConfirm' ref='confirmpassword' />
                 </div>
-                <button type = 'submit' className = 'btn btn-primary'>
+                <button type='submit' className='btn btn-primary'>
                     Sign up
                 </button>
             </form>

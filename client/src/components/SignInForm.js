@@ -58,11 +58,11 @@ class SignInForm extends Component {
     render(){
         console.log('SIGNIN', this.props)
         return(
-            <form className='ClassForm' onSubmit={this.handleSubmit}>
+            <form className='classForm' onSubmit={this.handleSubmit}>
                 <h2>Sign In</h2>
                 <div className='form-group'>
                     <label htmlFor='email' > Email address </label>
-                    <input onChange={this.handleChange} type='email' className='form-control' name='email'/>
+                    <input onChange={this.handleChange} type='email' className='form-control email' name='email'/>
                 </div>
                 <div className = 'form-group'>
                     <label htmlFor = 'password' > Password </label>

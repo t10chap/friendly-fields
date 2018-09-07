@@ -1,8 +1,93 @@
+* {
+    font-family: 'Varela Round', sans-serif;
+}
+
 button {
     border-radius: 10px;
     margin: 0 auto;
     background-color: rgb(138,43,226);
     color: white;
+}
+
+img {
+    max-height: 80px;
+    max-width: 80px; 
+}
+
+/************ LANDING ************/
+
+.landingPage {
+    display: flex;
+    flex-direction: row;
+    background-image: url("./images/homepage_background.jpg");
+    background-size: cover;
+    height: 100vh;
+    text-align: right;
+}
+
+.authorizeBtns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.authorizeBtns button {
+    text-align: center;
+    font-size: 24px;
+    height: 44px;
+    width: 150px;
+    margin-bottom: 40px;
+}
+
+.login {
+    height: 70%;
+    position: absolute;
+    top: 100px;
+    right: 4px;
+    background-color: rgba(186,85,211,.9);
+    border: solid 2px purple;
+    width: 30%;
+    text-align: center;
+}
+
+.login h1{
+    font-size: 26px;
+    margin: 30px 0 30px;
+}
+
+.login h3 {
+    margin: 30px 0 30px;
+}
+
+.about {
+    padding: 0 8px;
+    border-top: solid 2px purple;
+    padding-top: 20px;
+}
+
+.popup-content {
+    background-color: rgba(186,85,211,.9) !important;
+    border-radius: 10px;
+}
+
+.classForm input, select{
+    margin-bottom: 16px;
+}
+
+.email { 
+    margin-right: 30px;
+}
+
+.epicName {
+    margin-right: 10px;
+}
+
+.signUpPlatform {
+    margin-right: 6px;
+}
+
+.passConfirm {
+    margin-right: 66px;
 }
 
 /************ HOMEPAGE ************/
@@ -15,15 +100,6 @@ button {
     height: 100vh;
 }
 
-.left {
-    width: 31%;
-}
-
-.right {
-    width: 31%;
-    text-align: center;
-}
-
 .plot-container {
     border-radius: 10px;
 }
@@ -32,10 +108,37 @@ button {
     border-radius: 10px;
 }
 
-/************ POST ************/
+/**** LEFT ****/
+
+.left {
+    border-radius: 10px;
+    background-color: rgba(255, 100, 100, .9);
+    border: solid 2px rgb(255, 0, 0);
+    text-align: center;
+    margin-top: 20px;
+}
+
+.newsHead {
+    border-bottom: solid 2px rgb(255, 0, 0);
+}
+
+.left p, h4 {
+    margin: 2px 0;
+}
+
+.newsItems {
+    margin-bottom: 18px;
+}
+
+.newsRarity {
+    padding-bottom: 6px;
+    border-bottom: solid 2px rgba(40, 40, 255, .9);
+}
+
+/**** POST (MIDDLE) ****/
 
 .entirePost {
-    background-color: rgb(186,85,211);
+    background-color: rgba(186,85,211,.9);
     border: solid 2px purple;
     border-radius: 10px;
     margin-top: 8px;
@@ -52,8 +155,116 @@ button {
     width: 200px;
 }
 
-/************ RIGHT ************/
+/**** RIGHT ****/
 
+.graph {
+    margin-bottom: px;
+}
+
+.right{
+    text-align: center;
+    max-width: 100%;
+}
+
+.rightScroll {
+    margin: 0 auto;
+}
+
+.shop {
+    margin-top: 12px;
+    background-color: rgba(100, 100, 255, .9);
+    border: solid 2px rgba(40, 40, 255, .9);
+    border-radius: 10px;
+}
+
+right .main-svg {
+    margin-top: 6%;
+}
+
+.shopHead {
+    margin-top: 1px;
+    border-bottom: solid 2px rgba(40, 40, 255, .9);
+    font-size: 24px;
+}
+
+.shopCost {
+    padding-bottom: 6px;
+    margin-top: 0;
+    border-bottom: solid 2px rgb(255, 0, 0);
+}
+
+.modal {
+    height: 600px;
+}
+
+.modalClose {
+    position: absolute;
+    right: 10px;
+}
+
+.friendSearchBar {
+    margin-left: 6px;
+}
+
+.rightBtns {
+    margin: 6px 0;
+}
+
+/************ PROFILE ************/
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    background-image: url("./images/homepage_background.jpg");
+    background-size: cover;
+    height: 100vh;
+}
+
+.homeBtn {
+    margin: 12px auto 0;
+}
+
+.home {
+    width: 300px;
+    height: 30px;
+}
+
+.userStats {
+    border-radius: 10px;
+    background: rgba(194, 194, 194, .9);
+    height: 90%;
+    width: 96%;
+    margin: 12px auto 0;
+    padding-left: 20px;
+}
+
+.stats {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 30px;
+}
+
+.stats h3 {
+    height: 30px;
+}
+
+.wordNumb {
+    margin: 0 10px;
+}
+
+.wordNumb h3{
+    margin-bottom: -20px;
+}
+
+.wordNumb p{
+    border-top: solid 2px white;
+    font-weight: bold;
+    text-align: center;
+}
+
+profile .main-svg{
+    margin-top: 10%;
+}
 
 /************ HOVER ************/
 
@@ -61,4 +272,8 @@ button:hover {
     cursor: pointer;
     border: solid 1px white;
     font-weight: bold;
+}
+
+a:hover {
+    cursor: pointer;
 }

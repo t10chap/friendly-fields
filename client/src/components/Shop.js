@@ -26,23 +26,23 @@ class Shop extends Component {
     }
     
     render(){
-
-        let shopItems = [];
-        shopItems = this.state.shopItems;
-        console.log(shopItems)
-        shopItems.map(shopItem => {
+        let shopItems = this.state.shopItems;
+        console.log("SHOP SHOP SHOP", shopItems)
+        let items = shopItems.map(shopItem => {
+            console.log(shopItem)
             return(
                 <div className="newsItems">
-                    <p>{shopItem.item.image}</p>
-                    <h4>{shopItem.name}</h4>
+                    <img src={shopItem.item.image} />
+                    <h4>Name: {shopItem.name}</h4>
+                    <p className="shopCost">Cost: {shopItem.cost} V-Bucks</p>
                 </div>
             )
         })
 
         return(
-            <div>
-                <h3>SHOP SECTION</h3>
-                {/* {shopItems} */}
+            <div className="shop">
+                <h3 className="shopHead">Current Shop Items:</h3>
+                {items}
             </div>
         )
     }

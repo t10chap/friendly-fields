@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import LandingContainer from '../containers/LandingContainer';
 import HomepageContainer from '../containers/HomepageContainer';
+import Profile from '../components/Profile';
 
 const routes = (props) => {
 
@@ -20,6 +21,15 @@ const routes = (props) => {
                 render = { () => 
                     <HomepageContainer 
                         logout={props.logout}
+                        username={props.username}
+                        id={props.id}
+                        platform={props.platform}
+                    />
+                }
+            />
+            <Route path='/profile'
+                render = { () => 
+                    <Profile 
                         username={props.username}
                         id={props.id}
                         platform={props.platform}

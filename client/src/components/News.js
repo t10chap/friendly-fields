@@ -23,22 +23,23 @@ class News extends Component {
                 })
     }
 
-    render(){
-        let newsFeed = [];
-        newsFeed = this.state.newsFeed;
-        newsFeed.map(newsItem => {
+    render(){     
+        let newsFeed = this.state.newsFeed;
+        console.log(newsFeed)   
+        let news = newsFeed.map(newsItem => {
             return(
                 <div className="newsItems">
-                    <p>{newsItem.item.image}</p>
-                    <h4>{newsItem.name}</h4>
+                    <img src={newsItem.item.image} />
+                    <h4>Name: {newsItem.name}</h4>
+                    <p className="newsRarity">Rarity: {newsItem.item.rarity}</p>
                 </div>
             )
         })
 
         return(
             <div className="left">
-                <h3>NEWS SECTION</h3>
-                {/* {newsFeed} */}
+                <h3 className="newsHead">Upcoming/ Possible Leaks</h3>
+                {news}
             </div>
         )
     }

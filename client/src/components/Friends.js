@@ -48,13 +48,12 @@ class Friends extends Component {
             )
         })
         return(
-            <div>
+            <div className="friendSearch">
                 <label>
                     Search Users By Email:
-                    <input type="text" name="email" value={this.state.search} onChange={this.searchFriends}/>
+                    <input className="friendBar" type="text" name="email" value={this.state.search} onChange={this.searchFriends}/>
                 </label>
                 <div className="friendResult">
-                    <h1>Searched Friends</h1>
                     {users}
                 </div>
             </div>
