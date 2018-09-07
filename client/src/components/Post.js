@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import Popup from 'reactjs-popup';
-import PostModel from '../models/PostModel';
 
 class Post extends Component {
 

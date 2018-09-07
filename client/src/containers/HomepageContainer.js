@@ -8,7 +8,6 @@ import Friends from '../components/Friends';
 import { Scrollbars } from 'react-custom-scrollbars';
 import News from '../components/News';
 import Shop from '../components/Shop';
-import HamburgerMenu from 'react-hamburger-menu';
 
 class HomepageContainer extends Component {
 
@@ -58,32 +57,20 @@ class HomepageContainer extends Component {
                     <Posts id={this.props.id} />
                 </Scrollbars>
                     <div className="right">
-                        <HamburgerMenu className="hamburgerMenu"
-                            isOpen={this.state.open}
-                            menuClicked={this.handleClick}
-                            width={18}
-                            height={15}
-                            strokeWidth={1}
-                            rotate={0}
-                            color='black'
-                            borderRadius={0}
-                            animationDuration={0.5}
-                        >
-                            <Link to="/">
-                                <button className="rightBtns" onClick={this.props.logout} path="/">Logout</button>
-                            </Link>
-                            <Popup trigger={<button className="rightBtns">Add Friend</button>} modal onClose={this.closeModal}>
-                                {close=>(
-                                    <div className="modal">
-                                        <a className="modalClose" onClick={() => {close()}}>&times;</a>
-                                        <Friends id={this.props.id} friends={this.state.friends} addFriend={this.addFriend} />
-                                    </div>
-                                )}
-                            </Popup>
-                            <Link to="/profile">
-                                <button className="rightBtns" path="/profile">Profile</button>
-                            </Link>
-                        </HamburgerMenu>
+                        <Link to="/">
+                            <button className="rightBtns" onClick={this.props.logout} path="/">Logout</button>
+                        </Link>
+                        <Popup trigger={<button className="rightBtns">Add Friend</button>} modal onClose={this.closeModal}>
+                            {close=>(
+                                <div className="modal">
+                                    <a className="modalClose" onClick={() => {close()}}>&times;</a>
+                                    <Friends id={this.props.id} friends={this.state.friends} addFriend={this.addFriend} />
+                                </div>
+                            )}
+                        </Popup>
+                        <Link to="/profile">
+                            <button className="rightBtns" path="/profile">Profile</button>
+                        </Link>
                     <Graph username={this.props.username} id={this.props.id} platform={this.props.platform} />
                     <Scrollbars className="rightScroll" style={{ width: 320, height: 451 }}>
                         <Shop />

@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Popup from 'reactjs-popup';
 
 class PostForm extends Component {
 

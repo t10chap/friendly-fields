@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Users from '../models/UserModel';
-import {Link, withRouter} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import axios from 'axios';
 
 class SignInForm extends Component {
@@ -11,11 +11,7 @@ class SignInForm extends Component {
     }
 
     handleChange = (event) => {
-        // console.log(event.target.name, event.target.value)
-        this.setState({
-            [event.target.name]: event.target.value
-        })
-        // console.log(this.state)
+        this.setState({[event.target.name]: event.target.value})
     }
 
     handleSubmit = event => {
@@ -30,7 +26,6 @@ class SignInForm extends Component {
 
         Users.getUser(userData.email)
             .then(res => {
-                console.log(res)
                 localStorage.setItem('user', userData.email)
                 localStorage.setItem('epicName', res.data.epicName);
                 localStorage.setItem('userId', res.data._id);
@@ -43,7 +38,6 @@ class SignInForm extends Component {
                     }
                 )
                 .then(FortniteRes => {
-                    console.log("In Success", FortniteRes.data);
                     localStorage.setItem('epicId', FortniteRes.data.uid);
                     this.props.login(FortniteRes.data.username, res.data._id);
                     this.props.history.push('/homepage');
@@ -56,7 +50,6 @@ class SignInForm extends Component {
     }
 
     render(){
-        console.log('SIGNIN', this.props)
         return(
             <form className='classForm' onSubmit={this.handleSubmit}>
                 <h2>Sign In</h2>

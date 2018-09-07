@@ -27,10 +27,8 @@ const getUser = (req, res) => {
 const getFriends = (req, res) => {
     db.User.find(req.params.id, (err, friends) => {
         if(err){
-            console.log(err);
             return err;
         } else{
-            console.log(friends);
             res.json(friends);
         }
     })
@@ -61,15 +59,12 @@ const createUser = (req, res) => {
 const addFriend = (req, res) => {
     // console.log("req.params: ", req.params)
     db.User.findById(req.params.id, (err, user) => {
-        console.log("req.params: ", req.params)
         if(err){
-            console.log(err);
             return err;
         } else if(user){
             db.User.findOne(req.body, (err, friend) => {
                 // console.log("req.body: ", req.body)
                 if(err){
-                    console.log(err);
                     return err;
                 }else if(friend){
                      if(user.friends.indexOf(friend._id) > -1){

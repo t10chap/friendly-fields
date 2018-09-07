@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Users from '../models/UserModel';
-import {Link, withRouter} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import axios from 'axios';
 
 
@@ -27,11 +27,8 @@ class SignUpForm extends Component {
         let AuthStr = 'de190c1c8f31a915f6d050faf2cd7176';
         var userData = new FormData();
 
-        console.log(this.props)
-
         Users.createUser(user)
             .then(res => {
-                console.log(res)
                 if (res) {
                     userData.set('username', res.data.epicName);
                     localStorage.setItem('user', userData.email)
@@ -45,14 +42,12 @@ class SignUpForm extends Component {
                         }
                     )
                     .then(res => {
-                        console.log("In Success", res.data);
                         localStorage.setItem('epicId', res.data.uid);
                         this.props.login(res.data.username, res.data.uid);
                         this.props.history.push('/homepage');
                     })
                 }
                 else{
-                    console.log("User not found")
                 }
             })
             .catch(err => {
@@ -62,7 +57,6 @@ class SignUpForm extends Component {
     }
 
     render(){
-        console.log(this.state.platform)
         return(
             <form className='classForm' onSubmit={this.handleSubmit}>
                 <h2>Sign Up</h2>

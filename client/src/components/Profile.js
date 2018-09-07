@@ -34,7 +34,6 @@ class Profile extends Component {
         }
         )
         .then(res => {
-            console.log(res);
             this.setState({
                     username: localStorage.getItem('user'),
                     epicName: localStorage.getItem('epicName'),

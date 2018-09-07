@@ -6,7 +6,6 @@ import Profile from '../components/Profile';
 
 const routes = (props) => {
 
-    console.log("ROUTE PROPS", props)
     return (
         <Switch>
             <Route exact path='/'

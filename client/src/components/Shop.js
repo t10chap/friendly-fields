@@ -16,20 +16,16 @@ class Shop extends Component {
             langData,
             {headers: {Authorization: authStr}})
                 .then(res => {
-                    console.log(res);
                     res.data.items.map(shopItem => {
                         shopArr.push(shopItem);
                     })
                     this.setState({shopItems: shopArr})
-                    console.log(this.state.shopItems)
                 })
     }
     
     render(){
         let shopItems = this.state.shopItems;
-        console.log("SHOP SHOP SHOP", shopItems)
         let items = shopItems.map(shopItem => {
-            console.log(shopItem)
             return(
                 <div className="newsItems">
                     <img src={shopItem.item.image} />
