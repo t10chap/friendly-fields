@@ -50,7 +50,6 @@ class Posts extends Component {
     delete = (postId) => {
         PostModel.deletePost(postId)
         .then(res => {
-            // console.log("DELETE POST RESPONSE", res);
             let posts = this.state.posts;
             var foundIndex = posts.findIndex(x => x._id == res.data._id);
             posts.splice(foundIndex, 1);
@@ -62,7 +61,6 @@ class Posts extends Component {
     }
 
     render(){
-        // console.log("AUYYYOOOOOO", this.state.posts)
         let postArr = this.state.posts.map(post => {
             return(
                 <Post post={post} key={post._id} userId={this.props.id} edit={this.edit} delete={this.delete} />
@@ -70,9 +68,8 @@ class Posts extends Component {
         })
 
         return(
-                <div className="postWrap">
-                    {postArr}
-                    <Popup trigger={<button>Create Post</button>} modal onClose={this.closeModal}>
+                <div className="middle">
+                    <Popup trigger={<button className="postBtn">Create Post</button>} modal onClose={this.closeModal}>
                         {close=>(
                             <div className="modal">
                                 <a onClick={() => {close()}}>&times;</a>
@@ -80,6 +77,7 @@ class Posts extends Component {
                             </div>
                         )}
                     </Popup>
+                    {postArr}
                 </div>
         ) 
     }

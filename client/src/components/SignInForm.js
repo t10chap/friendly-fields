@@ -26,15 +26,15 @@ class SignInForm extends Component {
 
         var userData = {
             email: this.state.email,
-            password: this.state.password
         }
 
-        Users.getUser(userData)
+        Users.getUser(userData.email)
             .then(res => {
                 console.log(res)
                 localStorage.setItem('user', userData.email)
                 localStorage.setItem('epicName', res.data.epicName);
                 localStorage.setItem('userId', res.data._id);
+                localStorage.setItem('platform', res.data.platform)
                 formData.append("username", res.data.epicName);
                 axios.post('https://fortnite-public-api.theapinetwork.com/prod09/users/id',
                     formData,

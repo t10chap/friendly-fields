@@ -7,9 +7,9 @@ class UserModel {
         return request;
     }
 
-    static getUser(userData) {
-        console.log('UserModel', userData)
-        let request = axios.get(`http://localhost:4000/api/users/${userData.email}`)
+    static getUser(email) {
+        console.log('UserModel', email)
+        let request = axios.get(`http://localhost:4000/api/users/${email}`)
         return request;
     }
 
@@ -18,9 +18,9 @@ class UserModel {
         return request;
     }
 
-    static addFriend(email, userId){
+    static addFriend(userId,email){
         console.log("In AXIOS", email, userId)
-        let request = axios.post("http://localhost:400/api/users/friends/add/"+ userId)
+        let request = axios.put("http://localhost:4000/api/users/friends/add/"+ userId,{email:email})
         return request;
     }
 

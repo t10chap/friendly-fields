@@ -17,7 +17,7 @@ class Graph extends Component {
 
     componentDidMount() {
 
-        let AuthStr = 'de190c1c8f31a915f6d050faf2cd7176';
+        let authStr = 'de190c1c8f31a915f6d050faf2cd7176';
         
         var ninjaData = new FormData();
         ninjaData.set('user_id', '4735ce9132924caf8a5b17789b40f79c');
@@ -26,36 +26,35 @@ class Graph extends Component {
 
         var userData = new FormData();
         userData.set('user_id', localStorage.getItem('epicId'));
-        userData.set('platform', 'pc');
+        userData.set('platform', localStorage.getItem('platform'));
         userData.set('window', 'alltime')
     
         axios.post('https://fortnite-public-api.theapinetwork.com/prod09/users/public/br_stats',
           ninjaData,
           { 
-            headers: { Authorization: AuthStr } 
+            headers: { Authorization: authStr } 
           }
         )
-        .then(res => {
-            this.setState({
-                ninja: {
-                    winRatio: res.data.totals.winrate,
-                    kdRatio: res.data.totals.kd,
-                }
-            })
-        })
-
-        axios.post('https://fortnite-public-api.theapinetwork.com/prod09/users/public/br_stats',
-          userData,
-          { 
-            headers: { Authorization: AuthStr } 
-          }
-        )
-        .then(res => {
-            this.setState({
-                user: {
-                    winRatio: res.data.totals.winrate,
-                    kdRatio: res.data.totals.kd,
-                }
+        .then(ninjaRes => {
+            
+            axios.post('https://fortnite-public-api.theapinetwork.com/prod09/users/public/br_stats',
+            userData,
+            { 
+                headers: { Authorization: authStr } 
+            }
+            )
+            .then(res => {
+                console.log("USER STATS: ", res)
+                this.setState({
+                    user: {
+                        winRatio: res.data.totals.winrate,
+                        kdRatio: res.data.totals.kd,
+                    },
+                    ninja: {
+                        winRatio: ninjaRes.data.totals.winrate,
+                        kdRatio: ninjaRes.data.totals.kd,
+                    }
+                })
             })
         })
       }
@@ -63,14 +62,14 @@ class Graph extends Component {
     render(){
 
         let ninjaPlot = {
-            x: ['Win Ratio (Out of 100)', 'Kill/ Death Ratio'],
+            x: ['Win Rate Percent', 'Kill/ Death Ratio'],
             y: [this.state.ninja.winRatio, this.state.ninja.kdRatio],
             name: 'Ninja',
             type: 'bar',
         }
 
         let userPlot = {
-            x: ['Win Ratio (Out of 100)', 'Kill/ Death Ratio'],
+            x: ['Win Rate Percent', 'Kill/ Death Ratio'],
             y: [this.state.user.winRatio, this.state.user.kdRatio],
             name: 'You',
             type: 'bar',
@@ -79,7 +78,7 @@ class Graph extends Component {
         
 
         return(
-            <div className="Graph">
+            <div className="graph">
                 <Plot
                     data={[
                         ninjaPlot, userPlot
@@ -87,14 +86,14 @@ class Graph extends Component {
                     layout={ {barmode: 'group', width: 320, height: 240, title: 'Fortnite Stats'} }
                 />
 
-                <form action="">
-                    <label>Ninja</label>
+                {/* <form className="radioBtn">
                     <input type="radio" name="choice" value="Ninja" />
-                    <label>Friend</label>
+                    <label>Ninja</label>
                     <input type="radio" name="choice" value="Friend" />
-                    <label>Top 10</label>
+                    <label>Friend</label>
                     <input type="radio" name="choice" value="Top10" />
-                </form>
+                    <label>Top 10</label>
+                </form> */}
 
             </div>
         )

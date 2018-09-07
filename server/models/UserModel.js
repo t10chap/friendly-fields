@@ -5,6 +5,7 @@ let UserSchema = new Schema ({
     email: String,
     epicName: String,
     password: String,
+    platform: String,
     friends: [{
         type: Schema.Types.ObjectId,
         ref: 'User',

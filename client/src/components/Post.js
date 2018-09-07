@@ -31,8 +31,6 @@ class Post extends Component {
     }
 
     handleDelete = () => {
-        console.log("IN DELETE HANDLE ", this.props)
-        console.log(this.props.post._id)
         this.props.delete(this.props.post._id);
     }
 
@@ -48,11 +46,9 @@ class Post extends Component {
     }
 
     render(){
-        // console.log("PROPS", this.props)
-        // console.log("THIS:", this)
         if(this.state.edit){
             return(
-                <div>
+                <div className="entirePost">
                     <h2>{this.state.title}</h2>
                     <p>Edit Title Below:</p>
                     <input value={this.state.title} onChange={this.editTitle} className="edit"/>
@@ -65,9 +61,9 @@ class Post extends Component {
         }else{
             return(
                 <div className="entirePost">
-                    <h2 className="post">{this.props.post.title}</h2>
-                    <a className="post">{this.props.post.url}</a>
-                    <p className="post"> {this.props.post.content}</p>
+                    <h2 >{this.props.post.title}</h2>
+                    <a href={this.props.post.url}>{this.props.post.url}</a>
+                    <p > {this.props.post.content}</p>
                     {
                         this.props.userId===this.props.post.user
                         ?<button onClick={this.handleEdit}>Edit</button>

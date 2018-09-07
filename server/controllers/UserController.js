@@ -59,12 +59,15 @@ const createUser = (req, res) => {
 // POST api/users/friends/add/:id
 
 const addFriend = (req, res) => {
+    // console.log("req.params: ", req.params)
     db.User.findById(req.params.id, (err, user) => {
+        console.log("req.params: ", req.params)
         if(err){
             console.log(err);
             return err;
         } else if(user){
             db.User.findOne(req.body, (err, friend) => {
+                // console.log("req.body: ", req.body)
                 if(err){
                     console.log(err);
                     return err;
@@ -77,10 +80,8 @@ const addFriend = (req, res) => {
                         user.save()
                         res.status(200).json(user)
                     }
-                    
                 }
             })
-            
         } else{
             res.status(404).send('User not found')
         }

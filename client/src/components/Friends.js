@@ -5,12 +5,13 @@ class Friends extends Component {
 
     state = {
         search:'',
-        searchList:[],
+        searchList: [],
     }
 
     searchFriends = (event) => {
         event.preventDefault();
-        let arr = this.props.friends.filter(ele => ele.email.includes(event.target.value))
+        let users = this.props.friends;
+        let arr = users.filter(ele => ele.email.includes(event.target.value))
         let temp=[];
         arr.forEach(element => {
             temp.push(element.email)
@@ -23,10 +24,10 @@ class Friends extends Component {
 
     }
 
-    addFriend = (event) => {
+    handleAdd = (email) => {
         let friendsList = this.props.friends;
-        console.log("FRIENDS EMAIL: ", event.target.value);
-        UserModel.addFriend(event.target.value, this.props.id)
+        console.log("FRIENDS EMAIL: ", email,this.props.id);
+        UserModel.addFriend(email, this.props.id)
         .then(res => {
             console.log("ADD-FRIEND RES: ", res);
             friendsList.push(res);
@@ -42,7 +43,7 @@ class Friends extends Component {
             return(
                 <div>
                     <h3>{email}</h3>
-                    <button onClick={this.addFriend} value={email}>Add Friend</button>
+                    <button onClick={()=>this.handleAdd(email)} value={email}>Add Friend</button>
                 </div>
             )
         })

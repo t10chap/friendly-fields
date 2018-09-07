@@ -22,7 +22,7 @@ const routes = (props) => {
                         logout={props.logout}
                         username={props.username}
                         id={props.id}
-                        epicId={props.epicId}
+                        platform={props.platform}
                     />
                 }
             />

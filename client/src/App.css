@@ -1,1 +1,64 @@
+button {
+    border-radius: 10px;
+    margin: 0 auto;
+    background-color: rgb(138,43,226);
+    color: white;
+}
+
+/************ HOMEPAGE ************/
+
+.homepage {
+    display: flex;
+    justify-content: space-around;
+    background-image: url("./images/homepage_background.jpg");
+    background-size: cover;
+    height: 100vh;
+}
+
+.left {
+    width: 31%;
+}
+
+.right {
+    width: 31%;
+    text-align: center;
+}
+
+.plot-container {
+    border-radius: 10px;
+}
+
+.main-svg {
+    border-radius: 10px;
+}
+
 /************ POST ************/
+
+.entirePost {
+    background-color: rgb(186,85,211);
+    border: solid 2px purple;
+    border-radius: 10px;
+    margin-top: 8px;
+    padding: 0 8px;
+    color: white;
+    text-align: left;
+}
+
+.middle {
+    text-align: center;
+}
+
+.postBtn {
+    width: 200px;
+}
+
+/************ RIGHT ************/
+
+
+/************ HOVER ************/
+
+button:hover {
+    cursor: pointer;
+    border: solid 1px white;
+    font-weight: bold;
+}

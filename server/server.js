@@ -34,7 +34,7 @@ app.get("/api/users", controllers.user.getAll);
 app.get("/api/users/:user_email", controllers.user.getUser);
 app.get("/api/users/friends/:id", controllers.user.getFriends)
 app.post("/api/users/create", controllers.user.createUser);
-app.post("/api/users/friends/add/:id", controllers.user.addFriend);
+app.put("/api/users/friends/add/:id", controllers.user.addFriend);
 
 // --------- POSTS ---------
 app.get("/api/posts", controllers.post.getPosts);
